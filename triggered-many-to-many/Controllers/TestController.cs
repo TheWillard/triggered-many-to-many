@@ -28,10 +28,10 @@ namespace triggered_many_to_many.Controllers
             _context.Books.Add(new() { Id = 1, Title = "Book Title", Authors = new List<Author>() });
             _context.SaveChanges();
 
-            var user = _context.Authors.Include(x => x.Books).FirstOrDefault(x => x.Id == 1);
-            var books = _context.Books.Include(x => x.Authors).FirstOrDefault(x => x.Id == 1);
+            var book = _context.Authors.Include(x => x.Books).FirstOrDefault(x => x.Id == 1);
+            var author = _context.Books.Include(x => x.Authors).FirstOrDefault(x => x.Id == 1);
 
-            user.Books.Add(books);
+            book.Books.Add(author);
 
             _context.SaveChanges();
 
